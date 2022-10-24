@@ -50,9 +50,8 @@ public class Controller {
     @FXML
     JFXButton sortAll;
 
+    //
     FileChooser fileChooser = new FileChooser();
-
-
     private SortingClass sorting = new SortingClass();
 
     File selectedFile;
