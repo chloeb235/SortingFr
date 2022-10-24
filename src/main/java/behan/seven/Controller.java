@@ -9,6 +9,8 @@ Sorting Project: Controller Class
 package behan.seven;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -21,12 +23,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Controller {
 
     // FXIDs for all GUI items
     @FXML   // make all ListView displays for menu before + after sorting
-            JFXListView unsortedDisplay;
+    JFXListView unsortedDisplay;
     @FXML
     JFXListView selectionDisplay;
     @FXML
@@ -50,28 +53,45 @@ public class Controller {
     JFXButton sortAll;
     @FXML
     FileChooser fileChooser;
+    private SortingClass sorting;
 
     @FXML
     private File onChooseFileButton(){
         File selectedFile = fileChooser.showOpenDialog(new Stage());
+        ArrayList<String> unsorted = sorting.fileInput(selectedFile);
+        ObservableList<String> unsortedObservable = FXCollections.observableArrayList(unsorted);
+        unsortedDisplay.setItems(unsortedObservable);
         return selectedFile;
     }
 
-    File selectedeFile = onChooseFileButton();
+    File selectedFile = onChooseFileButton();
 
     @FXML
     private void onSelectionSort(){
-
+        ArrayList <String> selectionSorted = sorting.selectionSort(selectedFile);
+        ObservableList <String> selectionSortedObservable = FXCollections.observableArrayList(selectionSorted);
+        selectionDisplay.setItems(selectionSortedObservable);
     }
 
     @FXML
     private void onInsertionSort(){
-
+        ArrayList<String> insertionSorted = sorting.insertionSort(selectedFile);
+        ObservableList <String> insertionSortedObservable = FXCollections.observableArrayList(insertionSorted);
+        insertionDisplay.setItems(insertionSortedObservable);
     }
 
     @FXML
     private void onMergeSort(){
+        ArrayList<String> mergeSorted = sorting.mergeSort(selectedFile);
+        ObservableList<String> mergeSortedObservable = FXCollections.observableArrayList(mergeSorted);
+        mergeDisplay.setItems(mergeSortedObservable);
+    }
 
+    @FXML
+    private void onSortAll(){
+        onSelectionSort();
+        onInsertionSort();
+        onMergeSort();
     }
 
     @FXML
