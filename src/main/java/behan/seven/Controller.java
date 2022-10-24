@@ -89,13 +89,13 @@ public class Controller {
 
     @FXML
     public void onAbout(ActionEvent event) {
-        Dialog<String> aboutDiagnosticProgram = new Dialog<String>();
-        aboutDiagnosticProgram.setTitle("About The Diagnostic");
+        Dialog<String> aboutProgram = new Dialog<String>();
+        aboutProgram.setTitle("About The Program");
         ButtonType type = new ButtonType("Continue", ButtonBar.ButtonData.OK_DONE);
-        aboutDiagnosticProgram.setContentText("Begin by inputting your name. Press Start Diagnostic to proceed, then answer 7 carefully selected questions on each unit of the AP Physics 1 2022 curriculum. Submit your responses by selecting the Submit All button, then view your results!");
-        aboutDiagnosticProgram.getDialogPane().getButtonTypes().add(type);
-        aboutDiagnosticProgram.show();
-        aboutDiagnosticProgram.setHeight(aboutDiagnosticProgram.getHeight() + 100);
+        aboutProgram.setContentText("Begin by going to File, then Select File to choose a file to extract and sort its contents!");
+        aboutProgram.getDialogPane().getButtonTypes().add(type);
+        aboutProgram.show();
+        aboutProgram.setHeight(aboutProgram.getHeight() + 100);
     }
 
 
