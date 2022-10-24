@@ -37,8 +37,6 @@ public class Controller {
     @FXML   // make Buttons
     JFXButton selectFile;
     @FXML
-    JFXButton display;
-    @FXML
     JFXButton download;
     @FXML
     JFXButton selectionSort;
@@ -57,7 +55,7 @@ public class Controller {
         return selectedFile;
     }
 
-    File selectedeFile = onChooseFileButton();
+    File selectedFile = onChooseFileButton();
 
     @FXML
     private void onSelectionSort(){
