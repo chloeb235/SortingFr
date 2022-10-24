@@ -66,7 +66,6 @@ public class Controller {
         return selectedFile;
     }
 
-
     @FXML
     private void onSelectionSort(){
 
