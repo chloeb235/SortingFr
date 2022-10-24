@@ -40,8 +40,6 @@ public class Controller {
     @FXML   // make Buttons
     JFXButton selectFile;
     @FXML
-    JFXButton display;
-    @FXML
     JFXButton download;
     @FXML
     JFXButton selectionSort;
