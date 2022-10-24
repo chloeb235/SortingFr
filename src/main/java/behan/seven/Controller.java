@@ -96,7 +96,12 @@ public class Controller {
 
     @FXML
     private void onReset(){
-        //unsortedDisplay.setItems();
+        ObservableList<String> empty = FXCollections.observableArrayList();
+
+        unsortedDisplay.setItems(empty);
+        selectionDisplay.setItems(empty);
+        insertionDisplay.setItems(empty);
+        mergeDisplay.setItems(empty);
     }
 
     @FXML

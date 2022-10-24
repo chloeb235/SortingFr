@@ -130,30 +130,30 @@ public class SortingClass {
     public ArrayList< String > mergeArray(ArrayList<String> left, ArrayList<String> right){
         ArrayList<String> merged = new ArrayList<>();
 
-        int l = 0;
-        int r = 0;
+        int x = 0;
+        int y = 0;
 
-        while (l<left.size() && r<right.size()) {
-            if ((left.get(l)).compareTo(right.get(r))<0)
+        while (x<left.size() && y<right.size()) {
+            if ((left.get(x)).compareTo(right.get(y))<0)
             {
-                merged.add(left.get(l));
-                l++;
+                merged.add(left.get(x));
+                x++;
             }
             else {
-                merged.add(right.get(r));
-                r++;
+                merged.add(right.get(y));
+                y++;
             }
         }
 
-        while (l < left.size()) {
-            merged.add(left.get(l));
-            l++;
+        while (x < left.size()) {
+            merged.add(left.get(x));
+            x++;
         }
 
         // Append rest of the values in the right half, if any...
-        while (r < right.size()) {
-            merged.add(right.get(r));
-            r++;
+        while (y < right.size()) {
+            merged.add(right.get(y));
+            y++;
         }
         mergeOutput = merged;
         return merged;
