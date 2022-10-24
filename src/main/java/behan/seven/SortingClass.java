@@ -19,12 +19,10 @@ public class SortingClass {
 
     ArrayList<String> mergeOutput;
 
-    //Method to convert excel to array list
+    // create method to collect excel sheet contents into array list
     public ArrayList<String> fileInput(File selectedFile){
-        ArrayList<String> fileInput = new ArrayList<>();
-
-        try
-        {
+        ArrayList<String> fileInput = new ArrayList<>();    // convert excel -> arraylist
+        try {
             //Creates excel workbook
             XSSFWorkbook workbook = new XSSFWorkbook(selectedFile);
 
@@ -33,44 +31,48 @@ public class SortingClass {
 
             //Uses iterator to loop through rows
             Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext())
-            {
-                Row row = rowIterator.next();
-                Iterator<Cell> cellIterator = row.cellIterator();
-
-                while (cellIterator.hasNext())
-                {
-                    Cell cell = cellIterator.next();
-                    fileInput.add(cell.getStringCellValue());
+            while (rowIterator.hasNext()) {
+                // as each
+                Row thisRow = rowIterator.next();
+                Iterator<Cell> cellIterator = thisRow.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell thisCell = cellIterator.next();
+                    fileInput.add(thisCell.getStringCellValue());
                 }
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+        // return array list
         return fileInput;
     }
 
     //Selection Sort method
     public ArrayList<String> selectionSort(File selectedFile){
-        ArrayList<String > selectionOutput = fileInput(selectedFile);
-        for (int i = 0; i < selectionOutput.size(); i++) {
+        // set array list to be sorted (selection) + broadcast to excel file contents
+        ArrayList<String> selectionOutput = fileInput(selectedFile);
+        for (int i = 0; i < selectionOutput.size(); i++) {  // run through each arraylist item
+            // set the first item of the arraylist
             String smallest = selectionOutput.get(i);
             int smallestIndex = i;
+            // run through each arraylist item
             for (int j = i; j < selectionOutput.size(); j++) {
+                // compare next item to the previous
                 String value = selectionOutput.get(j);
                 if (value.compareTo(smallest) < 0) {
+                    // set the smaller of the values
                     smallest = value;
                     smallestIndex = j;
                 }
             }
             if (smallestIndex != i) {
-                String head = selectionOutput.get(i);
+                String leading = selectionOutput.get(i);
                 selectionOutput.set(i, smallest);
-                selectionOutput.set(smallestIndex, head);
+                selectionOutput.set(smallestIndex, leading);
             }
-        }return selectionOutput;
+        }
+        return selectionOutput;
     }
 
     //Insertion Sort
@@ -79,19 +81,18 @@ public class SortingClass {
         for (int j = 1; j < insertionOutput.size(); j++) {
             String current = insertionOutput.get(j);
             System.out.println(current);
-            int i = j-1;
+            int i = j - 1;
             while ((i > -1) && ((insertionOutput.get(i).compareTo(current)) > 0)) {
                 insertionOutput.set(i+1, insertionOutput.get(i));
                 i--;
             }
             insertionOutput.set(i+1, current);
-            //System.out.println(insertionOutput);
+
         }
         return insertionOutput;
     }
 
     //Merge sort
-
     //Initial merge sort method to convert selected file into array list and input into real merge sort method
     public ArrayList<String> mergeSort(File selectedFile) {
         mergeOutput = fileInput(selectedFile);
