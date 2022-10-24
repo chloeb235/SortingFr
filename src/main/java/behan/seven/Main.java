@@ -14,7 +14,7 @@ public class Main extends Application {
 
     public void start(Stage stage) throws IOException {
         // load FXML file
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("sortingStarbucksFr.fxml"));
         // set up scene
         Scene orderScene = new Scene(fxmlLoader.load());
         stage.setTitle("");    // title scene
