@@ -99,7 +99,7 @@ public class SortingClass {
         return mergeOutput;
     }
 
-    //Part of merge sort that actually merge splits array in half and adds the different sides into separate arrays
+    //Part of merge sort that merge splits array in half and adds the different sides into separate arrays
     public ArrayList <String> realMergeSort(ArrayList <String> arrayList) {
         ArrayList <String> mergeSorted;
         ArrayList <String> list = arrayList;
