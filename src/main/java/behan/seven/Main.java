@@ -1,5 +1,9 @@
 /*
-
+Chloe Behan & Jafar Hashim
+Cmdr Schenk
+Period 7
+24 October 2022
+Sorting Project: Main Class
  */
 package behan.seven;
 
@@ -22,11 +26,9 @@ public class Main extends Application {
         stage.show();
     }
 
-
     public static void main(String[] args) {
         launch();
         new SortingClass();
-        String a = "c";
     }
 
 }

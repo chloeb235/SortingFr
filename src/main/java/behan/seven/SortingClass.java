@@ -1,3 +1,10 @@
+/*
+Chloe Behan & Jafar Hashim
+Cmdr Schenk
+Period 7
+24 October 2022
+Sorting Project: Sorting Class
+ */
 package behan.seven;
 
 import java.io.File;
@@ -10,34 +17,32 @@ import org.apache.poi.xssf.usermodel.*;
 
 public class SortingClass {
 
+    ArrayList<String> mergeOutput;
+
     //Method to convert excel to array list
     public ArrayList<String> fileInput(File selectedFile){
         ArrayList<String> fileInput = new ArrayList<>();
 
         try
         {
-            //Create Workbook instance holding reference to .xlsx file
+            //Creates excel workbook
             XSSFWorkbook workbook = new XSSFWorkbook(selectedFile);
 
-            //Get first/desired sheet from the workbook
+            //Gets first sheet from workbook
             XSSFSheet sheet = workbook.getSheetAt(0);
 
-            //Iterate through each rows one by one
+            //Uses iterator to loop through rows
             Iterator<Row> rowIterator = sheet.iterator();
             while (rowIterator.hasNext())
             {
                 Row row = rowIterator.next();
-                //For each row, iterate through all the columns
                 Iterator<Cell> cellIterator = row.cellIterator();
 
                 while (cellIterator.hasNext())
                 {
                     Cell cell = cellIterator.next();
-                    //Check the cell type and format accordingly
-                    //System.out.print(cell.getStringCellValue());
                     fileInput.add(cell.getStringCellValue());
                 }
-                System.out.println("");
             }
         }
         catch (Exception e)
@@ -86,50 +91,48 @@ public class SortingClass {
     }
 
     //Merge sort
-    //Initial merge sort method to convert selected file into array list and input into real merge sort method
-    ArrayList<String> mergeOutput;
 
+    //Initial merge sort method to convert selected file into array list and input into real merge sort method
     public ArrayList<String> mergeSort(File selectedFile) {
         mergeOutput = fileInput(selectedFile);
         realMergeSort(mergeOutput);
         return mergeOutput;
     }
 
-    //Merge sort method that actually merge sorts
+    //Part of merge sort that actually merge splits array in half and adds the different sides into separate arrays
     public ArrayList <String> realMergeSort(ArrayList <String> arrayList) {
         ArrayList <String> sorted;
         ArrayList <String> list = arrayList;
 
+        //If-else to ensure the arraylist is not just one item
         if (list.size() == 1) {
             sorted = list;
         } else {
-            int mid1 = list.size() /2;
+            int center = list.size() /2;
 
-            ArrayList< String > left = new ArrayList< String >();
-            ArrayList< String > right = new ArrayList< String >();
+            //Left and right arrays for separate sections of arraylist
+            ArrayList<String> left = new ArrayList<>();
+            ArrayList<String> right = new ArrayList<>();
 
-            for ( int x = 0; x < mid1; x++) {
+            for (int x = 0; x < center; x++) {
                 left.add(list.get(x));
 
             }
-            for ( int x = mid1; x < list.size(); x++) {
+            for (int x = center; x < list.size(); x++) {
                 right.add(list.get(x));
             }
-
-            System.out.println("Left Array: " + left);
-            System.out.println("Right Array)" + right);
 
             left = realMergeSort(left);
             right = realMergeSort(right);
             sorted = mergeArray(left,right);
         }
-
         return sorted;
     }
 
-    public ArrayList< String > mergeArray(ArrayList<String> left, ArrayList<String> right){
+    //Merged Array (post Sort)
+    //Compares left and right sides of array and returns it to previous method for further sorting
+    public ArrayList<String> mergeArray(ArrayList<String> left, ArrayList<String> right){
         ArrayList<String> merged = new ArrayList<>();
-
         int x = 0;
         int y = 0;
 
@@ -150,7 +153,6 @@ public class SortingClass {
             x++;
         }
 
-        // Append rest of the values in the right half, if any...
         while (y < right.size()) {
             merged.add(right.get(y));
             y++;

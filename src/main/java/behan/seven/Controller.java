@@ -1,5 +1,5 @@
 /*
-Chloe Behan
+Chloe Behan & Jafar Hashim
 Cmdr Schenk
 Period 7
 24 October 2022
@@ -21,14 +21,15 @@ import javafx.scene.layout.VBox;
 import com.jfoenix.controls.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.controlsfx.control.Notifications;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -56,12 +57,13 @@ public class Controller {
     @FXML
     JFXButton sortAll;
 
-    //
+
     FileChooser fileChooser = new FileChooser();
     private SortingClass sorting = new SortingClass();
 
     File selectedFile;
 
+    //Choose file button behavior - sets unsorted listview
     @FXML
     private File onChooseFileButton(){
         selectedFile = fileChooser.showOpenDialog(new Stage());
@@ -71,14 +73,15 @@ public class Controller {
         return selectedFile;
     }
 
+    //Triggers selection sort & sets listview
     @FXML
     private void onSelectionSort(){
-
         ArrayList <String> selectionSorted = sorting.selectionSort(selectedFile);
         ObservableList <String> selectionSortedObservable = FXCollections.observableArrayList(selectionSorted);
         selectionDisplay.setItems(selectionSortedObservable);
     }
 
+    //Triggers insertion sort & sets listview
     @FXML
     private void onInsertionSort(){
         ArrayList<String> insertionSorted = sorting.insertionSort(selectedFile);
@@ -86,6 +89,7 @@ public class Controller {
         insertionDisplay.setItems(insertionSortedObservable);
     }
 
+    //Triggers merge sort & sets listview
     @FXML
     private void onMergeSort(){
         ArrayList<String> mergeSorted = sorting.mergeSort(selectedFile);
@@ -93,6 +97,7 @@ public class Controller {
         mergeDisplay.setItems(mergeSortedObservable);
     }
 
+    //Triggers all three sorts & their listviews
     @FXML
     private void onSortAll(){
         onSelectionSort();
@@ -100,6 +105,7 @@ public class Controller {
         onMergeSort();
     }
 
+    //Resets all listviews
     @FXML
     private void onReset(){
         ObservableList<String> empty = FXCollections.observableArrayList();
@@ -110,6 +116,7 @@ public class Controller {
         mergeDisplay.setItems(empty);
     }
 
+    //Triggers exit sequence
     @FXML
     private void onExit(ActionEvent event) {
         Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -123,6 +130,7 @@ public class Controller {
         }
     }
 
+    //About panel
     @FXML
     public void onAbout(ActionEvent event) {
         Dialog<String> aboutProgram = new Dialog<String>();
@@ -134,69 +142,54 @@ public class Controller {
         aboutProgram.setHeight(aboutProgram.getHeight() + 100);
     }
 
+    //Save sorted arraylist as a separate excel file
     @FXML
-    private void onPrintCheckedOut() throws SQLException {
-//Create blank workbook
+    private void onPrintSorted(){
+        //Create blank workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
 
         //Create a blank sheet
-        XSSFSheet spreadsheet = workbook.createSheet( "Checked Out Inventory Info");
+        XSSFSheet spreadsheet = workbook.createSheet( "Starbucks Menu");
 
-        //Create row object
-        XSSFRow row = spreadsheet.createRow(0);
-
-        XSSFCell cell = row.createCell(0);
-        cell.setCellValue("Book Name");
-
-        XSSFCell cell1 = row.createCell(1);
-        cell1.setCellValue("Checked Out By");
-
-        XSSFCell cell2 = row.createCell(2);
-        cell2.setCellValue("Date Checked Out");
-
-        //databaseManager.onPrintCheckedOut();
         // Get Data and Write into the Excel
-        int rowNum = 1;
-        ArrayList<Inventory> checkedOutBooks = databaseManager.onPrintCheckedOut();
-        for (Inventory inventory : checkedOutBooks) {
-            XSSFRow detailsRow = spreadsheet.createRow(rowNum++);
+        int rowNum = 0;
+        ArrayList<String> sortedList = sorting.selectionSort(selectedFile);
+        for (int x = 0; sortedList.size()>x; x++){
             int cellNum = 0;
-            System.out.println(inventory.getName() + inventory.getCheckedOutBy() + inventory.getDateCheckedOut());
-
-            writeIntoCell(detailsRow, inventory.getName(), cellNum++);
-            writeIntoCell(detailsRow, inventory.getCheckedOutBy(), cellNum++);
-            writeIntoCell(detailsRow, inventory.getDateCheckedOut(), cellNum++);
+            XSSFRow detailsRow = spreadsheet.createRow(rowNum++);
+            writeIntoCell(detailsRow, sortedList.get(x), cellNum++);
         }
 
 
         try
         {
-            //Write the workbook in file system
-            FileOutputStream out = new FileOutputStream("CheckedOutInventory.xlsx");
+            //Download workbook
+            FileOutputStream out = new FileOutputStream("StarbucksMenu.xlsx");
             workbook.write(out);
             out.close();
-            System.out.println("CheckedOutInventory.xlsx written successfully on disk.");
+
+            //Notifies user about download status
+            Notifications.create()
+                    .darkStyle()
+                    .hideAfter(Duration.millis(5000))
+                    .title("Sorted List Downloaded")
+                    .text("I love Starbucks")
+                    .showInformation();
+            System.out.println("StarbucksMenu.xlsx written successfully on disk.");
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-
-
     }
+
+    //Method to write given value into excel sheet
     private void writeIntoCell(XSSFRow row, Object value, int cellNum) {
         XSSFCell cell = row.createCell(cellNum);
 
         if (value instanceof String) {
-            //cell.setCellType(Cell.CELL_TYPE_STRING);
             cell.setCellValue((String) value);
-        } else if (value instanceof Long) {
-            //cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-            cell.setCellValue((Long) value);
-        } else if (value instanceof Integer) {
-            //cell.setCellType(Cell.CELL_TYPE_NUMERIC);
-            cell.setCellValue((Integer) value);
-        }
 
+        }
     }
 }

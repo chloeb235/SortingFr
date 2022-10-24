@@ -19,7 +19,7 @@
    <children>
       <VBox prefHeight="530.0" prefWidth="775.0" stylesheets="@sb.css">
          <children>
-            <MenuBar prefHeight="0.0" prefWidth="600.0">
+            <MenuBar prefHeight="0.0" prefWidth="600.0" style="-fx-background-color: #2E8B57;">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -69,7 +69,7 @@
                                           </Text>
                                        </children>
                                     </HBox>
-                                    <JFXButton fx:id="download" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" prefHeight="22.0" prefWidth="143.0" style="-fx-background-color: #6F4E37;" text="Download Sorted" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                    <JFXButton fx:id="download" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" onAction="#onPrintSorted" prefHeight="22.0" prefWidth="143.0" style="-fx-background-color: #6F4E37;" text="Download Sorted" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="40.0" right="10.0" />
                                        </VBox.margin>
