@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="775.0" stylesheets="@sb.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="behan.seven.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="775.0" stylesheets="@sb.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="behan.seven.Controller">
    <children>
       <VBox prefHeight="530.0" prefWidth="775.0" stylesheets="@sb.css">
          <children>
@@ -42,7 +42,7 @@
                <children>
                   <HBox prefHeight="542.0" prefWidth="775.0">
                      <children>
-                        <VBox prefHeight="474.0" prefWidth="194.0" style="-fx-background-color: #036635;">
+                        <VBox prefHeight="474.0" prefWidth="194.0" style="-fx-background-color: #6F4E37;">
                            <children>
                               <VBox>
                                  <children>
@@ -69,7 +69,7 @@
                                           </Text>
                                        </children>
                                     </HBox>
-                                    <JFXButton fx:id="download" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" onAction="#onPrintSorted" prefHeight="22.0" prefWidth="143.0" style="-fx-background-color: #6F4E37;" text="Download Sorted" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                    <JFXButton fx:id="download" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" onAction="#onPrintSorted" prefHeight="22.0" prefWidth="143.0" style="-fx-background-color: #036635;" text="Download Sorted" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="40.0" right="10.0" />
                                        </VBox.margin>
@@ -87,7 +87,7 @@
                                     <Insets />
                                  </opaqueInsets>
                               </JFXListView>
-                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onReset" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #6F4E37;" text="Reset All" textAlignment="CENTER" textFill="WHITE">
+                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#onReset" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #036635;" text="Reset All" textAlignment="CENTER" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="30.0" top="10.0" />
                                  </VBox.margin>
@@ -100,16 +100,28 @@
                            </children>
                         </VBox>
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="506.0" prefWidth="18.0" />
-                        <VBox prefHeight="485.0" prefWidth="576.0">
+                        <VBox alignment="CENTER" prefHeight="485.0" prefWidth="576.0">
                            <children>
-                              <Text fill="#036635" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="548.7761967182159">
-                                 <font>
-                                    <Font name="Serif Bold" size="55.0" />
-                                 </font>
+                              <VBox alignment="CENTER">
                                  <VBox.margin>
-                                    <Insets top="30.0" />
+                                    <Insets />
                                  </VBox.margin>
-                              </Text>
+                                 <children>
+                                    <Text fill="#036635" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to">
+                                       <font>
+                                          <Font name="Serif Bold Italic" size="23.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="-10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <Text fill="#036635" strokeType="OUTSIDE" strokeWidth="0.0" text="Starbucks" textAlignment="CENTER" wrappingWidth="285.5761845111847">
+                                       <font>
+                                          <Font name="Serif Bold" size="55.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
                               <HBox alignment="CENTER" prefHeight="70.0" prefWidth="553.0">
                                  <children>
                                     <JFXButton fx:id="selectFile" buttonType="RAISED" onAction="#onChooseFileButton" style="-fx-background-color: #036635;" text="Select File" textFill="WHITE">
@@ -130,7 +142,7 @@
                                     <VBox alignment="TOP_CENTER">
                                        <children>
                                           <JFXListView fx:id="selectionDisplay" prefHeight="262.0" prefWidth="196.0" />
-                                          <JFXButton fx:id="selectionSort" contentDisplay="CENTER" onAction="#onSelectionSort" prefHeight="37.0" prefWidth="111.0" style="-fx-background-color: #036635;" text="Selection" textAlignment="CENTER" textFill="WHITE">
+                                          <JFXButton fx:id="selectionSort" buttonType="RAISED" contentDisplay="CENTER" onAction="#onSelectionSort" prefHeight="37.0" prefWidth="111.0" style="-fx-background-color: #036635;" text="Selection" textAlignment="CENTER" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold Italic" size="16.0" />
                                              </font>
@@ -144,7 +156,7 @@
                                     <VBox alignment="TOP_CENTER" prefWidth="200.0">
                                        <children>
                                           <JFXListView fx:id="insertionDisplay" prefHeight="262.0" prefWidth="196.0" />
-                                          <JFXButton fx:id="insertionSort" contentDisplay="CENTER" onAction="#onInsertionSort" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #6F4E37;" text="Insertion" textAlignment="CENTER" textFill="WHITE">
+                                          <JFXButton fx:id="insertionSort" buttonType="RAISED" contentDisplay="CENTER" onAction="#onInsertionSort" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #6F4E37;" text="Insertion" textAlignment="CENTER" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold Italic" size="16.0" />
                                              </font>
@@ -158,7 +170,7 @@
                                     <VBox alignment="TOP_CENTER">
                                        <children>
                                           <JFXListView fx:id="mergeDisplay" prefHeight="263.0" prefWidth="189.0" />
-                                          <JFXButton fx:id="mergeSort" onAction="#onMergeSort" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #036635;" text="Merge" textAlignment="CENTER" textFill="WHITE">
+                                          <JFXButton fx:id="mergeSort" buttonType="RAISED" onAction="#onMergeSort" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #036635;" text="Merge" textAlignment="CENTER" textFill="WHITE">
                                              <font>
                                                 <Font name="System Bold Italic" size="16.0" />
                                              </font>

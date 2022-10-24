@@ -1,4 +1,4 @@
-module behan.seven.sortingfr {
+module behan.seven {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -13,6 +13,6 @@ module behan.seven.sortingfr {
     requires poi;
     requires com.jfoenix;
 
-    opens behan.seven to javafx.fxml;
+    opens behan.seven to javafx.fxml, javafx.controls, javafx.graphics, javafx.base;
     exports behan.seven;
 }
