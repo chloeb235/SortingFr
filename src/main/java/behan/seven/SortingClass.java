@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.*;
 
 public class SortingClass {
 
+    //Method to convert excel to array list
     public ArrayList<String> fileInput(File selectedFile){
         ArrayList<String> fileInput = new ArrayList<>();
 
@@ -45,6 +46,8 @@ public class SortingClass {
         }
         return fileInput;
     }
+
+    //Selection Sort method
     public ArrayList<String> selectionSort(File selectedFile){
         ArrayList<String > selectionOutput = fileInput(selectedFile);
         for (int i = 0; i < selectionOutput.size(); i++) {
@@ -65,6 +68,7 @@ public class SortingClass {
         }return selectionOutput;
     }
 
+    //Insertion Sort
     public ArrayList<String> insertionSort(File selectedFile){
         ArrayList<String> insertionOutput = fileInput(selectedFile);
         for (int j = 1; j < insertionOutput.size(); j++) {
@@ -82,17 +86,21 @@ public class SortingClass {
     }
 
     //Merge sort
+    //Initial merge sort method to convert selected file into array list and input into real merge sort method
+    ArrayList<String> mergeOutput;
+
     public ArrayList<String> mergeSort(File selectedFile) {
-        ArrayList<String> mergeOutput = fileInput(selectedFile);
+        mergeOutput = fileInput(selectedFile);
         realMergeSort(mergeOutput);
         return mergeOutput;
     }
+
+    //Merge sort method that actually merge sorts
     public ArrayList <String> realMergeSort(ArrayList <String> arrayList) {
         ArrayList <String> sorted;
         ArrayList <String> list = arrayList;
 
-        if (list.size() == 1)
-        {
+        if (list.size() == 1) {
             sorted = list;
         } else {
             int mid1 = list.size() /2;
@@ -119,44 +127,35 @@ public class SortingClass {
         return sorted;
     }
 
-    public ArrayList< String > mergeArray(ArrayList< String > left, ArrayList< String > right)
-    {
-        ArrayList< String > merged = new ArrayList<>();
+    public ArrayList< String > mergeArray(ArrayList<String> left, ArrayList<String> right){
+        ArrayList<String> merged = new ArrayList<>();
 
-        int i = 0;
         int l = 0;
         int r = 0;
 
-        while (l < left.size() && r < right.size())
-        {
-            if ((left.get(l)).compareTo(right.get(r)) < 0)
+        while (l<left.size() && r<right.size()) {
+            if ((left.get(l)).compareTo(right.get(r))<0)
             {
                 merged.add(left.get(l));
                 l++;
             }
-            else
-            {
+            else {
                 merged.add(right.get(r));
                 r++;
             }
-            i++;
         }
 
-        while (l < left.size())
-        {
+        while (l < left.size()) {
             merged.add(left.get(l));
             l++;
-            i++;
         }
 
         // Append rest of the values in the right half, if any...
-        while (r < right.size())
-        {
+        while (r < right.size()) {
             merged.add(right.get(r));
             r++;
-            i++;
         }
-        System.out.println(merged);
+        mergeOutput = merged;
         return merged;
     }
 

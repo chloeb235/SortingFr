@@ -122,6 +122,4 @@ public class Controller {
         aboutProgram.show();
         aboutProgram.setHeight(aboutProgram.getHeight() + 100);
     }
-
-
 }
