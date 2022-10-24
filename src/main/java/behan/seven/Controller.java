@@ -60,7 +60,7 @@ public class Controller implements Initializable {
     @FXML
     JFXButton sortAll;
 
-
+    //
     FileChooser fileChooser = new FileChooser();
     private SortingClass sorting = new SortingClass();
 
@@ -139,7 +139,7 @@ public class Controller implements Initializable {
         Dialog<String> aboutProgram = new Dialog<String>();
         aboutProgram.setTitle("About The Program");
         ButtonType type = new ButtonType("Continue", ButtonBar.ButtonData.OK_DONE);
-        aboutProgram.setContentText("Begin by going to File, then Select File to choose a file to extract and sort its contents!");
+        aboutProgram.setContentText("Begin by clicking the Select File button OR going to File, then Select File to choose a file to extract and sort its contents!");
         aboutProgram.getDialogPane().getButtonTypes().add(type);
         aboutProgram.show();
         aboutProgram.setHeight(aboutProgram.getHeight() + 100);
@@ -185,6 +185,7 @@ public class Controller implements Initializable {
 
     //Method to write given value into excel sheet
     private void writeIntoCell(XSSFRow row, Object value, int cellNum) {
+        //
         XSSFCell cell = row.createCell(cellNum);
 
         if (value instanceof String) {

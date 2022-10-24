@@ -10,7 +10,6 @@ package behan.seven;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.*;
@@ -32,7 +31,7 @@ public class SortingClass {
             //Uses iterator to loop through rows
             Iterator<Row> rowIterator = sheet.iterator();
             while (rowIterator.hasNext()) {
-                // as each
+                // each row is scanned and each cell's contents are stored
                 Row thisRow = rowIterator.next();
                 Iterator<Cell> cellIterator = thisRow.cellIterator();
                 while (cellIterator.hasNext()) {
