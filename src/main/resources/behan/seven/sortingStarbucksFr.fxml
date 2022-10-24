@@ -7,15 +7,17 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="behan.seven.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="775.0" stylesheets="@sb.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="behan.seven.Controller">
    <children>
-      <VBox prefHeight="530.0" prefWidth="775.0">
+      <VBox prefHeight="530.0" prefWidth="775.0" stylesheets="@sb.css">
          <children>
             <MenuBar prefHeight="0.0" prefWidth="600.0">
               <menus>
@@ -40,93 +42,129 @@
                <children>
                   <HBox prefHeight="542.0" prefWidth="775.0">
                      <children>
-                        <VBox prefHeight="474.0" prefWidth="194.0">
+                        <VBox prefHeight="474.0" prefWidth="194.0" style="-fx-background-color: #036635;">
                            <children>
                               <VBox>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Starbucks Menu" textAlignment="CENTER" wrappingWidth="193.3367919921875">
-                                       <font>
-                                          <Font name="System Bold Italic" size="16.0" />
-                                       </font>
+                                    <HBox prefHeight="68.0" prefWidth="181.0">
                                        <VBox.margin>
-                                          <Insets bottom="5.0" top="10.0" />
+                                          <Insets bottom="10.0" top="15.0" />
                                        </VBox.margin>
-                                    </Text>
-                                    <JFXButton fx:id="download" alignment="CENTER" contentDisplay="RIGHT" prefHeight="31.0" prefWidth="178.0" text="Download Sorted" textAlignment="CENTER" wrapText="true">
+                                       <children>
+                                          <ImageView fitHeight="68.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@logo.png" />
+                                             </image>
+                                             <HBox.margin>
+                                                <Insets left="15.0" />
+                                             </HBox.margin>
+                                          </ImageView>
+                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" textAlignment="CENTER" wrappingWidth="68.53678131103516">
+                                             <font>
+                                                <Font name="System Bold Italic" size="22.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" top="20.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                    </HBox>
+                                    <JFXButton fx:id="download" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" prefHeight="22.0" prefWidth="143.0" style="-fx-background-color: #6F4E37;" text="Download Sorted" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                        <VBox.margin>
-                                          <Insets left="50.0" />
+                                          <Insets bottom="10.0" left="40.0" right="10.0" />
                                        </VBox.margin>
                                        <font>
-                                          <Font size="15.0" />
+                                          <Font name="System Bold Italic" size="14.0" />
                                        </font>
                                     </JFXButton>
                                  </children>
                               </VBox>
-                              <JFXListView fx:id="unsortedDisplay" prefHeight="400.0" prefWidth="183.0">
+                              <JFXListView fx:id="unsortedDisplay" prefHeight="382.0" prefWidth="173.0">
                                  <VBox.margin>
-                                    <Insets left="10.0" />
+                                    <Insets left="15.0" right="15.0" />
                                  </VBox.margin>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
                               </JFXListView>
-                              <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="178.0" text="Reset All" textAlignment="CENTER" />
+                              <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: #6F4E37;" text="Reset All" textAlignment="CENTER" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="30.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold Italic" size="14.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets></JFXButton>
                            </children>
                         </VBox>
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="506.0" prefWidth="18.0" />
                         <VBox prefHeight="485.0" prefWidth="576.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="535.9762077331543">
+                              <Text fill="#036635" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="548.7761967182159">
                                  <font>
-                                    <Font name="Serif Bold" size="40.0" />
+                                    <Font name="Serif Bold" size="55.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets top="10.0" />
+                                    <Insets top="30.0" />
                                  </VBox.margin>
                               </Text>
-                              <HBox alignment="CENTER">
+                              <HBox alignment="CENTER" prefHeight="70.0" prefWidth="553.0">
                                  <children>
-                                    <JFXButton fx:id="selectFile" text="Select File">
+                                    <JFXButton fx:id="selectFile" buttonType="RAISED" style="-fx-background-color: #036635;" text="Select File" textFill="WHITE">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font name="System Bold Italic" size="16.0" />
                                        </font>
                                     </JFXButton>
                                     <Separator opacity="0.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="78.0" />
-                                    <JFXButton fx:id="sortAll" onAction="#onSortAll" text="Sort All">
+                                    <JFXButton fx:id="sortAll" buttonType="RAISED" onAction="#onSortAll" style="-fx-background-color: #036635;" text="Sort All" textFill="WHITE">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font name="System Bold Italic" size="16.0" />
                                        </font>
                                     </JFXButton>
                                  </children>
                               </HBox>
                               <HBox>
                                  <children>
-                                    <VBox>
+                                    <VBox alignment="TOP_CENTER">
                                        <children>
-                                          <JFXListView fx:id="selectionDisplay" prefHeight="370.0" prefWidth="170.0" />
-                                          <JFXButton fx:id="selectionSort" prefHeight="0.0" prefWidth="157.0" text="Selection" textAlignment="CENTER">
+                                          <JFXListView fx:id="selectionDisplay" prefHeight="262.0" prefWidth="196.0" />
+                                          <JFXButton fx:id="selectionSort" contentDisplay="CENTER" prefHeight="37.0" prefWidth="111.0" style="-fx-background-color: #036635;" text="Selection" textAlignment="CENTER" textFill="WHITE">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="System Bold Italic" size="16.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </JFXButton>
                                        </children>
                                     </VBox>
                                     <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
-                                    <VBox>
+                                    <VBox alignment="TOP_CENTER" prefWidth="200.0">
                                        <children>
-                                          <JFXListView fx:id="insertionDisplay" prefHeight="370.0" />
-                                          <JFXButton fx:id="insertionSort" contentDisplay="CENTER" prefHeight="26.0" prefWidth="197.0" text="Insertion" textAlignment="CENTER">
+                                          <JFXListView fx:id="insertionDisplay" prefHeight="262.0" prefWidth="196.0" />
+                                          <JFXButton fx:id="insertionSort" contentDisplay="CENTER" prefHeight="37.0" prefWidth="106.0" style="-fx-background-color: #6F4E37;" text="Insertion" textAlignment="CENTER" textFill="WHITE">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="System Bold Italic" size="16.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </JFXButton>
                                        </children>
                                     </VBox>
                                     <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
-                                    <VBox>
+                                    <VBox alignment="TOP_CENTER">
                                        <children>
-                                          <JFXListView fx:id="mergeDisplay" prefHeight="370.0" prefWidth="150.0" />
-                                          <JFXButton fx:id="mergeSort" prefHeight="26.0" prefWidth="192.0" text="Merge" textAlignment="CENTER">
+                                          <JFXListView fx:id="mergeDisplay" prefHeight="263.0" prefWidth="189.0" />
+                                          <JFXButton fx:id="mergeSort" prefHeight="37.0" prefWidth="90.0" style="-fx-background-color: #036635;" text="Merge" textAlignment="CENTER" textFill="WHITE">
                                              <font>
-                                                <Font size="15.0" />
+                                                <Font name="System Bold Italic" size="16.0" />
                                              </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </JFXButton>
                                        </children>
                                     </VBox>
