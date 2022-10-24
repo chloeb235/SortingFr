@@ -26,7 +26,7 @@ public class Controller {
 
     // FXIDs for all GUI items
     @FXML   // make all ListView displays for menu before + after sorting
-            JFXListView unsortedDisplay;
+    JFXListView unsortedDisplay;
     @FXML
     JFXListView selectionDisplay;
     @FXML
