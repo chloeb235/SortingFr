@@ -13,6 +13,6 @@ module behan.seven.sortingfr {
     requires poi;
     requires com.jfoenix;
 
-    opens behan.seven.sortingfr to javafx.fxml;
-    exports behan.seven.sortingfr;
+    opens behan.seven to javafx.fxml;
+    exports behan.seven;
 }
