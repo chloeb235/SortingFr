@@ -16,8 +16,6 @@ import org.apache.poi.xssf.usermodel.*;
 
 public class SortingClass {
 
-    ArrayList<String> mergeOutput;
-
     // create method to collect excel sheet contents into array list
     public ArrayList<String> fileInput(File selectedFile){
         ArrayList<String> fileInput = new ArrayList<>();    // convert excel -> arraylist
@@ -65,6 +63,7 @@ public class SortingClass {
                     smallestIndex = j;
                 }
             }
+            // orient the "smallest" item vs the next
             if (smallestIndex != i) {
                 String leading = selectionOutput.get(i);
                 selectionOutput.set(i, smallest);
@@ -92,6 +91,7 @@ public class SortingClass {
     }
 
     //Merge sort
+    ArrayList<String> mergeOutput;
     //Initial merge sort method to convert selected file into array list and input into real merge sort method
     public ArrayList<String> mergeSort(File selectedFile) {
         mergeOutput = fileInput(selectedFile);
@@ -101,14 +101,14 @@ public class SortingClass {
 
     //Part of merge sort that actually merge splits array in half and adds the different sides into separate arrays
     public ArrayList <String> realMergeSort(ArrayList <String> arrayList) {
-        ArrayList <String> sorted;
+        ArrayList <String> mergeSorted;
         ArrayList <String> list = arrayList;
 
         //If-else to ensure the arraylist is not just one item
         if (list.size() == 1) {
-            sorted = list;
+            mergeSorted = list;
         } else {
-            int center = list.size() /2;
+            int center = list.size()/2;
 
             //Left and right arrays for separate sections of arraylist
             ArrayList<String> left = new ArrayList<>();
@@ -116,7 +116,6 @@ public class SortingClass {
 
             for (int x = 0; x < center; x++) {
                 left.add(list.get(x));
-
             }
             for (int x = center; x < list.size(); x++) {
                 right.add(list.get(x));
@@ -124,9 +123,9 @@ public class SortingClass {
 
             left = realMergeSort(left);
             right = realMergeSort(right);
-            sorted = mergeArray(left,right);
+            mergeSorted = mergeArray(left,right);
         }
-        return sorted;
+        return mergeSorted;
     }
 
     //Merged Array (post Sort)
