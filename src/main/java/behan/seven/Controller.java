@@ -27,7 +27,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.controlsfx.control.Notifications;
-
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -60,11 +59,12 @@ public class Controller implements Initializable {
     @FXML
     JFXButton sortAll;
 
-    //
+    // create option to access and select files
     FileChooser fileChooser = new FileChooser();
-    private SortingClass sorting = new SortingClass();
-
     File selectedFile;
+
+    // access SortingClass methods to enable all 3 sorting methods
+    private SortingClass sorting = new SortingClass();  // 3 sorts will be displayed in GUI components
 
     //Choose file button behavior - sets unsorted listview
     @FXML
@@ -103,6 +103,7 @@ public class Controller implements Initializable {
     //Triggers all three sorts & their listviews
     @FXML
     private void onSortAll() {
+        // run method to put file through all sorting methods + display results
         onSelectionSort();
         onInsertionSort();
         onMergeSort();
@@ -111,8 +112,8 @@ public class Controller implements Initializable {
     //Resets all listviews
     @FXML
     private void onReset() {
+        // clear the displays within ListViews
         ObservableList<String> empty = FXCollections.observableArrayList();
-
         unsortedDisplay.setItems(empty);
         selectionDisplay.setItems(empty);
         insertionDisplay.setItems(empty);
@@ -124,7 +125,7 @@ public class Controller implements Initializable {
     private void onExit(javafx.event.ActionEvent event) {
         Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION);
         exitAlert.setTitle("Exit");
-        exitAlert.setHeaderText("You are about to exit this program!");
+        exitAlert.setHeaderText("You are about to exit this program!"); // alert
         exitAlert.setContentText("Are you sure you would like to leave?");
 
         //Close program if user confirms "OK" they want to exit
@@ -139,6 +140,7 @@ public class Controller implements Initializable {
         Dialog<String> aboutProgram = new Dialog<String>();
         aboutProgram.setTitle("About The Program");
         ButtonType type = new ButtonType("Continue", ButtonBar.ButtonData.OK_DONE);
+        // show warning text
         aboutProgram.setContentText("Begin by clicking the Select File button OR going to File, then Select File to choose a file to extract and sort its contents!");
         aboutProgram.getDialogPane().getButtonTypes().add(type);
         aboutProgram.show();
@@ -185,12 +187,10 @@ public class Controller implements Initializable {
 
     //Method to write given value into excel sheet
     private void writeIntoCell(XSSFRow row, Object value, int cellNum) {
-        //
+        // add sorted elements to new excel sheet cells
         XSSFCell cell = row.createCell(cellNum);
-
         if (value instanceof String) {
             cell.setCellValue((String) value);
-
         }
     }
 

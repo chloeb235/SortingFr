@@ -34,6 +34,7 @@ public class SortingClass {
                 Iterator<Cell> cellIterator = thisRow.cellIterator();
                 while (cellIterator.hasNext()) {
                     Cell thisCell = cellIterator.next();
+                    // add contents to arraylist
                     fileInput.add(thisCell.getStringCellValue());
                 }
             }
@@ -66,7 +67,7 @@ public class SortingClass {
             // orient the "smallest" item vs the next
             if (smallestIndex != i) {
                 String leading = selectionOutput.get(i);
-                selectionOutput.set(i, smallest);
+                selectionOutput.set(i, smallest);   // order items
                 selectionOutput.set(smallestIndex, leading);
             }
         }
@@ -77,6 +78,7 @@ public class SortingClass {
     public ArrayList<String> insertionSort(File selectedFile){
         ArrayList<String> insertionOutput = fileInput(selectedFile);
         for (int j = 1; j < insertionOutput.size(); j++) {
+            // insert each element into the array
             String current = insertionOutput.get(j);
             System.out.println(current);
             int i = j - 1;
@@ -84,6 +86,7 @@ public class SortingClass {
                 insertionOutput.set(i+1, insertionOutput.get(i));
                 i--;
             }
+            // implement each item + orient
             insertionOutput.set(i+1, current);
 
         }
@@ -113,14 +116,13 @@ public class SortingClass {
             //Left and right arrays for separate sections of arraylist
             ArrayList<String> left = new ArrayList<>();
             ArrayList<String> right = new ArrayList<>();
-
-            for (int x = 0; x < center; x++) {
+            for (int x = 0; x < center; x++) {  // add elements left
                 left.add(list.get(x));
             }
-            for (int x = center; x < list.size(); x++) {
+            for (int x = center; x < list.size(); x++) {   // add elements right
                 right.add(list.get(x));
             }
-
+            // set separate arraylists
             left = realMergeSort(left);
             right = realMergeSort(right);
             mergeSorted = mergeArray(left,right);
@@ -134,32 +136,27 @@ public class SortingClass {
         ArrayList<String> merged = new ArrayList<>();
         int x = 0;
         int y = 0;
-
+        // add elements to left + right array
         while (x<left.size() && y<right.size()) {
-            if ((left.get(x)).compareTo(right.get(y))<0)
-            {
+            if ((left.get(x)).compareTo(right.get(y))<0) {
                 merged.add(left.get(x));
                 x++;
-            }
-            else {
+            } else {
                 merged.add(right.get(y));
                 y++;
             }
         }
-
-        while (x < left.size()) {
+        while (x < left.size()) {   // add left
             merged.add(left.get(x));
             x++;
         }
-
-        while (y < right.size()) {
+        while (y < right.size()) {  // add right
             merged.add(right.get(y));
             y++;
         }
+        // return merged sorted list
         mergeOutput = merged;
         return merged;
     }
 
-
 }
-
