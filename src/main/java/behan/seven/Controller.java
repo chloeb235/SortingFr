@@ -49,9 +49,11 @@ public class Controller {
     JFXButton mergeSort;
     @FXML
     JFXButton sortAll;
-    @FXML
-    FileChooser fileChooser;
-    private SortingClass sorting;
+
+    FileChooser fileChooser = new FileChooser();
+
+
+    private SortingClass sorting = new SortingClass();
 
     File selectedFile;
 

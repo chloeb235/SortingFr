@@ -24,7 +24,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
+        new SortingClass();
         String a = "c";
     }
 
