@@ -17,6 +17,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import com.jfoenix.controls.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
 
 public class Controller {
 
@@ -44,6 +48,31 @@ public class Controller {
     JFXButton mergeSort;
     @FXML
     JFXButton sortAll;
+    @FXML
+    FileChooser fileChooser;
+
+    @FXML
+    private File onChooseFileButton(){
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        return selectedFile;
+    }
+
+    File selectedeFile = onChooseFileButton();
+
+    @FXML
+    private void onSelectionSort(){
+
+    }
+
+    @FXML
+    private void onInsertionSort(){
+
+    }
+
+    @FXML
+    private void onMergeSort(){
+
+    }
 
     @FXML
     private void onExit(ActionEvent event) {
