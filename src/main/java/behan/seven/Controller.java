@@ -53,19 +53,21 @@ public class Controller {
     FileChooser fileChooser;
     private SortingClass sorting;
 
+    File selectedFile;
+
     @FXML
     private File onChooseFileButton(){
-        File selectedFile = fileChooser.showOpenDialog(new Stage());
+        selectedFile = fileChooser.showOpenDialog(new Stage());
         ArrayList<String> unsorted = sorting.fileInput(selectedFile);
         ObservableList<String> unsortedObservable = FXCollections.observableArrayList(unsorted);
         unsortedDisplay.setItems(unsortedObservable);
         return selectedFile;
     }
 
-    File selectedFile = onChooseFileButton();
 
     @FXML
     private void onSelectionSort(){
+
         ArrayList <String> selectionSorted = sorting.selectionSort(selectedFile);
         ObservableList <String> selectionSortedObservable = FXCollections.observableArrayList(selectionSorted);
         selectionDisplay.setItems(selectionSortedObservable);
@@ -90,6 +92,11 @@ public class Controller {
         onSelectionSort();
         onInsertionSort();
         onMergeSort();
+    }
+
+    @FXML
+    private void onReset(){
+        //unsortedDisplay.setItems();
     }
 
     @FXML
