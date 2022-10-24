@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="behan.seven.Controller">
+   <children>
+      <VBox prefHeight="530.0" prefWidth="775.0">
+         <children>
+            <MenuBar prefHeight="0.0" prefWidth="600.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem fx:id="fileChooser" mnemonicParsing="false" onAction="#onChooseFileButton" text="Select File" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onAbout" text="About" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Exit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#onExit" text="Close Application" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <VBox prefHeight="507.0" prefWidth="775.0">
+               <children>
+                  <HBox prefHeight="542.0" prefWidth="775.0">
+                     <children>
+                        <VBox prefHeight="474.0" prefWidth="194.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Starbucks Menu" textAlignment="CENTER" wrappingWidth="193.3367919921875">
+                                       <font>
+                                          <Font name="System Bold Italic" size="16.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <JFXButton fx:id="download" alignment="CENTER" contentDisplay="RIGHT" prefHeight="31.0" prefWidth="178.0" text="Download Sorted" textAlignment="CENTER" wrapText="true">
+                                       <VBox.margin>
+                                          <Insets left="50.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                              <JFXListView fx:id="unsortedDisplay" prefHeight="400.0" prefWidth="183.0">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </JFXListView>
+                              <JFXButton fx:id="display" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="178.0" text="Display" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="506.0" prefWidth="18.0" />
+                        <VBox prefHeight="485.0" prefWidth="576.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="535.9762077331543">
+                                 <font>
+                                    <Font name="Serif Bold" size="40.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <JFXButton fx:id="selectFile" text="Select File">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <Separator opacity="0.0" orientation="VERTICAL" prefHeight="42.0" prefWidth="78.0" />
+                                    <JFXButton fx:id="sortAll" text="Sort All">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                          <JFXListView fx:id="selectionDisplay" prefHeight="370.0" prefWidth="170.0" />
+                                          <JFXButton fx:id="selectionSort" prefHeight="0.0" prefWidth="157.0" text="Selection" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                    <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
+                                    <VBox>
+                                       <children>
+                                          <JFXListView fx:id="insertionDisplay" prefHeight="370.0" />
+                                          <JFXButton fx:id="insertionSort" contentDisplay="CENTER" prefHeight="26.0" prefWidth="197.0" text="Insertion" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                    <Separator opacity="0.0" orientation="VERTICAL" prefHeight="200.0" />
+                                    <VBox>
+                                       <children>
+                                          <JFXListView fx:id="mergeDisplay" prefHeight="370.0" prefWidth="150.0" />
+                                          <JFXButton fx:id="mergeSort" prefHeight="26.0" prefWidth="192.0" text="Merge" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </JFXButton>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets left="7.0" right="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
